@@ -1,0 +1,71 @@
+
+ const firstData = [
+    {
+      "word": "hello",
+      "phonetic": "həˈləʊ",
+      "phonetics": [
+        {
+          "text": "həˈləʊ",
+          "audio": "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3"
+        },
+        {
+          "text": "hɛˈləʊ"
+        }
+      ],
+      "origin": "early 19th century: variant of earlier hollo ; related to holla.",
+      "meanings": [
+        {
+          "partOfSpeech": "exclamation",
+          "definitions": [
+            {
+              "definition": "used as a greeting or to begin a phone conversation.",
+              "example": "hello there, Katie!",
+              "synonyms": [],
+              "antonyms": []
+            }
+          ]
+        },
+        {
+          "partOfSpeech": "noun",
+          "definitions": [
+            {
+              "definition": "an utterance of ‘hello’; a greeting.",
+              "example": "she was getting polite nods and hellos from people",
+              "synonyms": [],
+              "antonyms": []
+            }
+          ]
+        },
+        {
+          "partOfSpeech": "verb",
+          "definitions": [
+            {
+              "definition": "say or shout ‘hello’.",
+              "example": "I pressed the phone button and helloed",
+              "synonyms": [],
+              "antonyms": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+    const myFunction = (args) => {
+      Object.entries(args).map(([key, value]) => {
+      if(typeof value === "object"){
+        myFunction(value)
+      }
+      console.log(key, value)
+      })
+    }
+    const meanings =     firstData[0].meanings
+    //nice function
+const meaning = meanings.map((index) => {
+  // console.log(index.partOfSpeech)
+  // console.log(index.definitions[0].definition)
+  console.log(index.partOfSpeech)
+  return `${index.partOfSpeech.charAt(0).toUpperCase() + index.partOfSpeech.slice(1)}-definition:`  + " " + "It can be defined as," + " " +`${index.definitions[0].definition}` 
+})
+console.log(meaning.join(","))
+//second function
