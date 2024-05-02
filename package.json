@@ -10,19 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@xata.io/screenshot": "^1.0.0",
     "axios": "^1.6.8",
-    "dom-to-image": "^2.6.0",
-    "html-to-image": "^1.11.11",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "react-screen-capture": "^1.1.1",
     "react-speech-recognition": "^3.10.0",
     "react-toastify": "^10.0.5",
-    "regenerator-runtime": "^0.14.1",
-    "use-react-screenshot": "^4.0.0"
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
