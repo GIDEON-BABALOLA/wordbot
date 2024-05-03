@@ -16,26 +16,10 @@ const  ChatBot = () => {
     inputText,
     setMessages
   } = useContext(ChatBotContext)
-  const { generateResponse, error, isLoading } = useGenerateResponse()
+  const { generateResponse, error } = useGenerateResponse()
   const { playChime } = usePlayChime()
-  // const chatBoxRef = useRef()
-  // const chatBotRef = useRef()
     const [toggleChatBot, setToggleChatBot] = useState(false)
-    // const [inputText, setInputText] = useState("")
-    // const [inputInitHeight, setInputInitHeight] = useState("50px")
-    // const [messages, setMessages] = useState([{id : 1, type : "outgoing", message : "Start By saying Hi"}])
     let userMessage
-    // useEffect(() => {
-    //   scrollToBottom();
-    // }, [messages]);
-    // const scrollToBottom = () => {
-    //   if (chatBoxRef.current) {
-    //     chatBoxRef.current.scrollTo({
-    //       top: chatBoxRef.current.scrollHeight,
-    //       behavior: 'smooth' // Optional smooth scrolling
-    //     });
-    //   }
-    // };
     const handleChat = async () => {
       console.log(inputText)
       userMessage = inputText.trim();

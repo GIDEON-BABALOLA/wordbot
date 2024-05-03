@@ -1,11 +1,16 @@
 import { createContext, useState, useRef, useEffect } from "react";
+import  useWindowSize  from "../hooks/useWindowSize"
  const ChatBotContext = createContext({})
 export const ChatBotProvider = ( { children } ) => {
+  const { width, height} = useWindowSize()
     const chatBoxRef = useRef()
     const chatBotRef = useRef()
     const [messages, setMessages] = useState([])
     const [inputText, setInputText] = useState("")
     const [inputInitHeight, setInputInitHeight] = useState("50px")
+    useEffect(() => {
+    chatBotRef.height = `${width}px`
+    }, [width])
     useEffect(() => {
 setMessages([{id : 1, type : "outgoing", message : "Start By saying Hi"}])
     }, [])
@@ -15,7 +20,7 @@ setMessages([{id : 1, type : "outgoing", message : "Start By saying Hi"}])
       const scrollToBottom = () => {
         if (chatBoxRef.current) {
           chatBoxRef.current.scrollTo({
-            top: chatBoxRef.current.scrollHeight,
+            top: chatBotRef.current.scrollHeight,
             behavior: 'smooth' // Optional smooth scrolling
           });
         }
