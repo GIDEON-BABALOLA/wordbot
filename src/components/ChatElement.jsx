@@ -3,7 +3,6 @@ import { BiMicrophone } from "react-icons/bi";
 import { BiClipboard } from "react-icons/bi";
 import { BiSpeaker } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
-import { BiSolidBot } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { FaRobot } from "react-icons/fa";
 const ChatElement = ({ message, type, apiError, audio, error}) => {

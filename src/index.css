@@ -192,7 +192,7 @@ font-size: 30px;
     bottom : 10%
 }
 .chatbot .chatbox{
-    height: 900px;
+    height: 1000px;
     overflow-y: auto;
     margin-bottom: 0%;
     padding-bottom: 0%;
@@ -204,7 +204,7 @@ font-size: 30px;
 }
 @media(max-width: 400px){
     .chatbot .chatbox{
-        height: 500px;
+        height: 550px;
         overflow-y: auto;
         margin-bottom: 0%;
         padding-bottom: 0%;
