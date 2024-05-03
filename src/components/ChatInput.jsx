@@ -1,7 +1,12 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useContext } from "react"
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useScreenshot } from 'use-react-screenshot'
-const ChatInput = ( { inputText, setInputText, handleChat, inputInitHeight, setInputInitHeight, chatBotRef } ) => {
+import { BiMicrophone } from "react-icons/bi";
+import { BiCamera } from "react-icons/bi";
+import { BiSolidSend } from "react-icons/bi";
+import  ChatBotContext  from "../context/chatBotContext"
+const ChatInput = ( { handleChat } ) => {
+   const { inputText, setInputText, inputInitHeight, setInputInitHeight, chatBotRef } = useContext(ChatBotContext)
    const [image, takeScreenshot] = useScreenshot()
    const getImage = () => takeScreenshot(chatBotRef.current)
    const { transcript } = useSpeechRecognition()
@@ -28,6 +33,7 @@ getImage()
 console.log(image)
 }
 const handleEnter = (e) => {
+   console.log(e)
    if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800){
       e.preventDefault();
       handleChat()
@@ -39,16 +45,18 @@ const handleEnter = (e) => {
   <span id="photo-btn" className=" sendButton"
   onClick={screenShot}
   >
-  { !image ? <i className="bx bxs-camera"></i>
-   : <a href={image} download="news" style={{color : "black"}}> <i className="bx bxs-camera"></i></a>}
+  { !image ? <BiCamera />
+   : <a href={image} download="news" style={{color : "black"}}> <BiCamera /></a>}
   </span>
-  <span id="mic-btn" className="material-symbols-outlined" onClick={handleRecord}>mic</span>
+  <span id="mic-btn" className="" onClick={handleRecord}>
+   <BiMicrophone />
+  </span>
   <span id="send-btn" className="sendButton"  onClick={
    () => { handleChat()
       SpeechRecognition.stopListening();}
    
    }>
-   <i className="bx bxs-send"></i></span>
+   <BiSolidSend /></span>
   </div>
   )
 }

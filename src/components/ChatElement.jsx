@@ -1,5 +1,8 @@
-import { createElement, useState } from 'react';
 import  { toast } from "react-hot-toast";
+import { BiMicrophone } from "react-icons/bi";
+import { BiClipboard } from "react-icons/bi";
+import { BiSpeaker } from "react-icons/bi";
+import { BiRefresh } from "react-icons/bi";
 const ChatElement = ({ message, type, apiError, audio, error}) => {
   const handlePlay = async () => {
           // Trigger download of audio file
@@ -29,39 +32,45 @@ const ChatElement = ({ message, type, apiError, audio, error}) => {
     const utterance = new SpeechSynthesisUtterance(message)
     window.speechSynthesis.speak(utterance)
   }
-  function Microphone() {
-    return createElement(
-      'i',
-      { className: 'bx bxs-microphone',
-       style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
-        onClick: handlePlay },
-      ''
-    );
-  }
-  function  Clipboard() {
-    return createElement(
-      'i',
-      { className: 'bx bx-clipboard',
-       style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
-        onClick: handleCopy },
-      ''
-    );
-  }
-  function Speaker(){
-    return createElement(
-      "i",
-      {className: "bx bx-speaker",
-      style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
-      onClick : handleSpeak
-    }
-    )
-  }
+  // function Microphone() {
+  //   return createElement(
+  //     'i',
+  //     { className: 'bx bxs-microphone',
+  //      style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
+  //       onClick: handlePlay },
+  //     ''
+  //   );
+  // }
+  // function  Clipboard() {
+  //   return createElement(
+  //     'i',
+  //     { className: 'bx bx-clipboard',
+  //      style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
+  //       onClick: handleCopy },
+  //     ''
+  //   );
+  // }
+  // function Speaker(){
+  //   return createElement(
+  //     "i",
+  //     {className: "bx bx-speaker",
+  //     style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
+  //     onClick : handleSpeak
+  //   }
+  //   )
+  // }
   return <>
     {type === "outgoing" ?  <li className="chat outgoing"><span className="material-symbols-outlined">person</span><p>{message}</p> </li> : 
 <li className= "chat incoming">
     <span id="robot" className="material-symbols-outlined">smart_toy</span><p className={error ? "error" : ""}>{message}
-        <div className='incoming-options'>
-        <Microphone/><Clipboard /><i className='bx bx-refresh'></i><Speaker />
+        <div className='incoming-options' style={{cursor : "pointer"}}>
+        <BiMicrophone
+          onClick={handlePlay}
+        /><BiClipboard 
+          onClick={handleCopy}
+        /><BiRefresh />
+        <BiSpeaker
+        onClick={handleSpeak} />
         </div>
     </p>
      </li>}    

@@ -12,6 +12,15 @@ body{
     width: 0.5px; /* Set the width of the vertical scrollbar */
     height: 0.5px; /* Set the height of the horizontal scrollbar */
 }
+.togg{
+    font-size: 25px;
+    text-align: center;
+}
+.togger{
+    text-align: center;
+    margin-left: 3%;
+    margin-top: 33%;
+}
 .chatbot{
 width: 350px;
 background: #ffff;

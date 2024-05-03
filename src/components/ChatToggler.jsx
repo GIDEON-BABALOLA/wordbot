@@ -1,3 +1,5 @@
+import { BiConversation } from "react-icons/bi";
+import { CgClose } from "react-icons/cg";
 const ChatToggler = ({toggleChatBot, setToggleChatBot}) => {
     const openChatBot = () => {
 setToggleChatBot(!toggleChatBot)
@@ -5,8 +7,8 @@ setToggleChatBot(!toggleChatBot)
   return (
     <>
     <button className="chatbot-toggler" onClick={openChatBot}>
-    <span className="material-symbols-outlined mode_comment">mode_comment</span>
-    <span className="material-symbols-outlined close">close</span>
+    <span className="togg"><BiConversation className="togger"/></span>
+    <span className="togg"><CgClose className="togger"/></span>
         </button>
         </>
   )

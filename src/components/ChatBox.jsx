@@ -1,5 +1,8 @@
 import ChatElement from "./ChatElement"
-const chatBox = ({ messages, chatBoxRef, apiError }) => {
+import { useContext } from "react"
+import  ChatBotContext  from "../context/chatBotContext"
+const ChatBox = ({ apiError }) => {
+  const { messages, chatBoxRef } = useContext(ChatBotContext)
   return (
     <section>
              <ul className="chatbox" ref={chatBoxRef}>
@@ -16,4 +19,4 @@ const chatBox = ({ messages, chatBoxRef, apiError }) => {
   )
 }
 
-export default chatBox
+export default ChatBox
