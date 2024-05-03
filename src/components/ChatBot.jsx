@@ -52,8 +52,7 @@ return //closes the function;
        setInputText("")                            
     const incomingArray = [...outgoingArray, {id : outgoingArray[outgoingArray.length - 1].id + 1, type: "incoming", message: "Thinking...", error : false}] 
     const response = await generateResponse(incomingArray);
-    console.log(response)
-    isLoading === null ? setMessages(incomingArray) :      setMessages(response)
+    setMessages(response)
     playChime()
       }
 
