@@ -3,12 +3,13 @@ const chatHeader = ({setToggleChatBot, toggleChatBot}) => {
   return (
     <>
     <section className="header">
-            <div>            <h2>WordBot</h2></div>
-            <span className=""
+            <div className="header-contain">            <h2>WordBot</h2>
+            <span className="spanner"
             onClick={
             () =>
               setToggleChatBot(!toggleChatBot)}
-            ><CgClose /></span>
+            ><CgClose /></span></div>
+          
         </section>
         </>
   )
