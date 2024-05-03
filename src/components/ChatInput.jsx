@@ -1,4 +1,5 @@
 import { useRef, useEffect, useContext } from "react"
+import "regenerator-runtime"
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useScreenshot } from 'use-react-screenshot'
 import { BiMicrophone } from "react-icons/bi";
