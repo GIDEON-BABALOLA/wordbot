@@ -34,7 +34,6 @@ getImage()
 console.log(image)
 }
 const handleEnter = (e) => {
-   console.log(e)
    if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800){
       e.preventDefault();
       handleChat()
