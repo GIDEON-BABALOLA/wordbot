@@ -3,7 +3,17 @@ import { words } from "../api/wordsAPI";
 export const useGenerateResponse =  () => {
 const [error, setError] = useState(null)
 const [isLoading, setIsLoading] = useState(null)
+const oxfordDictionaryResponse = () => {
+
+}
+const merriamWebsterDictionaryResponse = () => {
+
+}
+const dictionaryApi = () => {
+  
+}
     const generateResponse = async (incomingArray) => {
+      console.log(Math.floor((Math.random() * 3) + 1))
         setIsLoading(true)
         class myExplanation {
           constructor(definition, partOfSpeech, transcription) {

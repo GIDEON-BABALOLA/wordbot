@@ -9,9 +9,6 @@ export const ChatBotProvider = ( { children } ) => {
     const [inputText, setInputText] = useState("")
     const [inputInitHeight, setInputInitHeight] = useState("50px")
     useEffect(() => {
-    chatBotRef.height = `${width}px`
-    }, [width])
-    useEffect(() => {
 setMessages([{id : 1, type : "outgoing", message : "Start By saying Hi"}])
     }, [])
     useEffect(() => {
@@ -20,7 +17,7 @@ setMessages([{id : 1, type : "outgoing", message : "Start By saying Hi"}])
       const scrollToBottom = () => {
         if (chatBoxRef.current) {
           chatBoxRef.current.scrollTo({
-            top: chatBotRef.current.scrollHeight,
+            top: chatBoxRef.current.scrollHeight,
             behavior: 'smooth' // Optional smooth scrolling
           });
         }

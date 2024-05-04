@@ -26,7 +26,7 @@ body{
     font-size: 20px;
 }
 .chatbot{
-width: 350px;
+width: 400px;
 background: #ffff;
 position: fixed;
 right: 40px;
@@ -91,7 +91,7 @@ box-shadow: 0 0 128px 0 rgba(0,0,0,0, 0.1),
 }
 
 .chatbot .chatbox{
-    height: 430px;
+    height: 435px;
     overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: #0f0f20 white;
@@ -192,7 +192,7 @@ font-size: 30px;
     bottom : 10%
 }
 .chatbot .chatbox{
-    height: 700px;
+    height: 100vh;
     overflow-y: auto;
     margin-bottom: 0%;
     padding-bottom: 0%;
@@ -202,15 +202,14 @@ font-size: 30px;
 }
 
 }
-@media(max-width: 400px){
+@media(max-width: 900px){
     .chatbot .chatbox{
-        height: 400px;
+        height: 80vh;
         overflow-y: auto;
         margin-bottom: 0%;
         padding-bottom: 0%;
     }
 }
-
 .mode_comment{
   font-variation-settings:
   'FILL' 0,
@@ -252,7 +251,7 @@ font-size: 30px;
 #photo-btn {
     font-size: 25px;
     color: black;
-    transform: translateX(-235px); /* Move the element 20px to the left */
+    transform: translateX(-280px); /* Move the element 20px to the left */
 }
 
 .textarea-container {

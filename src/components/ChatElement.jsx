@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import  { toast } from "react-hot-toast";
 import { BiMicrophone } from "react-icons/bi";
 import { BiClipboard } from "react-icons/bi";
@@ -5,7 +6,16 @@ import { BiSpeaker } from "react-icons/bi";
 import { BiRefresh } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { FaRobot } from "react-icons/fa";
-const ChatElement = ({ message, type, apiError, audio, error}) => {
+import { BiSolidTrashAlt } from "react-icons/bi";
+import { FaRegThumbsUp } from "react-icons/fa6";
+import { FaRegThumbsDown } from "react-icons/fa6";
+import { BiSolidDislike } from "react-icons/bi";
+import { BiDislike } from "react-icons/bi";
+import { BiLike } from "react-icons/bi";
+import { BiSolidLike } from "react-icons/bi";
+import ChatBotContext from "../context/chatBotContext";
+const ChatElement = ({ message, type, apiError, audio, error, id}) => {
+  const { setMessages, messages } = useContext(ChatBotContext)
   const handlePlay = async () => {
           // Trigger download of audio file
           const audioBlob = await fetch(audio).then((response) => response.blob());
@@ -34,46 +44,34 @@ const ChatElement = ({ message, type, apiError, audio, error}) => {
     const utterance = new SpeechSynthesisUtterance(message)
     window.speechSynthesis.speak(utterance)
   }
-  // function Microphone() {
-  //   return createElement(
-  //     'i',
-  //     { className: 'bx bxs-microphone',
-  //      style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
-  //       onClick: handlePlay },
-  //     ''
-  //   );
-  // }
-  // function  Clipboard() {
-  //   return createElement(
-  //     'i',
-  //     { className: 'bx bx-clipboard',
-  //      style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
-  //       onClick: handleCopy },
-  //     ''
-  //   );
-  // }
-  // function Speaker(){
-  //   return createElement(
-  //     "i",
-  //     {className: "bx bx-speaker",
-  //     style : { backgroundColor : "transparent", color : "black", padding : "1%", cursor : "pointer"},
-  //     onClick : handleSpeak
-  //   }
-  //   )
-  // }
+  const handleDelete = () => {
+    const update = messages.filter((chat) => chat.id !== id)
+    setMessages(update)
+  }
   return <>
     {type === "outgoing" ?  <li className="chat outgoing"><span className="potter"><FaRegUser /></span><p>{message}</p> </li> : 
 <li className= "chat incoming">
     <span id="robot">
     <FaRobot size="1.5em" /></span><p className={error ? "error" : ""}>{message}
         <div className='incoming-options' style={{cursor : "pointer"}}>
-        <BiMicrophone
+
+        <BiMicrophone style={{margin : "2%"}}
           onClick={handlePlay}
-        /><BiClipboard 
+        /><BiClipboard style={{margin : "2%"}}
           onClick={handleCopy}
-        /><BiRefresh />
-        <BiSpeaker
+        /><BiRefresh style={{margin : "2%"}}
+         />
+        <BiSpeaker style={{margin : "2%"}}
         onClick={handleSpeak} />
+        <BiLike 
+          style={{margin : "2%"}}
+        />
+        <BiDislike 
+          style={{margin : "2%"}}
+        />
+        <BiSolidTrashAlt
+           onClick={handleDelete}
+        style={{margin : "2%"}} />
         </div>
     </p>
      </li>}    

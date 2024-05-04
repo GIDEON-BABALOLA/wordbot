@@ -4,8 +4,8 @@ export const words = axios.create({
     withCredentials : false
 })
 export const oxfordDictionary = axios.create({
-    baseURL : "",
-    withCredentials : false
+    baseURL : "	https://od-api-sandbox.oxforddictionaries.com/api/v2",
+    withCredentials : true
 })
 export const merriamWebsterDictionary = axios.create({
     baseURL : "",
