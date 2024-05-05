@@ -14,7 +14,9 @@ import { BiDislike } from "react-icons/bi";
 import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import ChatBotContext from "../context/chatBotContext";
+import { useGenerateResponse } from "../hooks/useGenerateResponse";
 const ChatElement = ({ message, type, apiError, audio, error, id}) => {
+  const { generateResponse } = useGenerateResponse()
   const { setMessages, messages } = useContext(ChatBotContext)
   const handlePlay = async () => {
           // Trigger download of audio file
@@ -48,13 +50,23 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
     const update = messages.filter((chat) => chat.id !== id)
     setMessages(update)
   }
+  const handleRefresh = async () => {
+    console.log("gideon")
+    let newArray = messages.slice(0, messages.length - 1);
+    const incomingArray = [...newArray, {id : newArray[newArray.length - 1].id + 1, type: "incoming", message: "Thinking", error : false}] 
+    setMessages(incomingArray)
+    setTimeout(async() => {
+      const response = await generateResponse(incomingArray);
+      setMessages(response)
+    }, 1000)
+  }
   return <>
     {type === "outgoing" ?  <li className="chat outgoing"><span className="potter"><FaRegUser /></span><p>{message}</p> </li> : 
 <li className= "chat incoming">
     <span id="robot">
-    <FaRobot size="1.5em" /></span><p className={error ? "error" : ""}>{message}
+    <FaRobot size="1.5em" /></span><p className={error ? "error" : ""}>{message} { message === "Thinking" &&  <div className="loaderdot"></div> }
        
-       { message !== "Thinking..." && 
+       { message !== "Thinking" && 
         <div className='incoming-options' style={{cursor : "pointer"}}>
 
         <BiMicrophone style={{margin : "2%"}}
@@ -62,9 +74,11 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
         /><BiClipboard style={{margin : "2%"}}
           onClick={handleCopy}
         /><BiRefresh style={{margin : "2%"}}
+        onClick={handleRefresh}
          />
         <BiSpeaker style={{margin : "2%"}}
         onClick={handleSpeak} />
+        
         <BiLike 
           style={{margin : "2%"}}
         />
