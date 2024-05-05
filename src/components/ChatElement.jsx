@@ -53,6 +53,8 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
 <li className= "chat incoming">
     <span id="robot">
     <FaRobot size="1.5em" /></span><p className={error ? "error" : ""}>{message}
+       
+       { message !== "Thinking..." && 
         <div className='incoming-options' style={{cursor : "pointer"}}>
 
         <BiMicrophone style={{margin : "2%"}}
@@ -73,6 +75,7 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
            onClick={handleDelete}
         style={{margin : "2%"}} />
         </div>
+       }
     </p>
      </li>}    
   </>

@@ -35,8 +35,12 @@ return //closes the function;
        setMessages(outgoingArray)
        setInputText("")                            
     const incomingArray = [...outgoingArray, {id : outgoingArray[outgoingArray.length - 1].id + 1, type: "incoming", message: "Thinking...", error : false}] 
-    const response = await generateResponse(incomingArray);
-    setMessages(response)
+    setMessages(incomingArray)
+    setTimeout(async() => {
+      const response = await generateResponse(incomingArray);
+      setMessages(response)
+    }, 1000)
+
     playChime()
       }
 
