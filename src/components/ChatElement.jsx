@@ -17,6 +17,7 @@ import ChatBotContext from "../context/chatBotContext";
 import { useGenerateResponse } from "../hooks/useGenerateResponse";
 import { usePlayChime } from "../hooks/usePlayChime";
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { AiOutlineSound } from "react-icons/ai";
 const ChatElement = ({ message, type, apiError, audio, error, id, time}) => {
   const { playChime } =usePlayChime()
   const { generateResponse } = useGenerateResponse()
@@ -87,9 +88,8 @@ const ChatElement = ({ message, type, apiError, audio, error, id, time}) => {
         /><BiRefresh style={{margin : "2%"}}
         onClick={handleRefresh}
          />
-        <BiSpeaker style={{margin : "2%"}}
+         <AiOutlineSound  style={{margin : "2%"}}
         onClick={handleSpeak} />
-        
         <BiLike 
           style={{margin : "2%"}}
         />

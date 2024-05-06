@@ -27,7 +27,7 @@ body{
     font-size: 20px;
 }
 .chatbot{
-width: 400px;
+width: 420px;
 background: #ffff;
 position: fixed;
 right: 40px;
@@ -272,7 +272,7 @@ font-size: 30px;
 #photo-btn {
     font-size: 25px;
     color: black;
-    transform: translateX(-280px); /* Move the element 20px to the left */
+    transform: translateX(-300px); /* Move the element 20px to the left */
 }
 
 .textarea-container {
