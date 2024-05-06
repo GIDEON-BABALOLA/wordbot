@@ -15,19 +15,24 @@ import { BiLike } from "react-icons/bi";
 import { BiSolidLike } from "react-icons/bi";
 import ChatBotContext from "../context/chatBotContext";
 import { useGenerateResponse } from "../hooks/useGenerateResponse";
+import { usePlayChime } from "../hooks/usePlayChime";
 const ChatElement = ({ message, type, apiError, audio, error, id}) => {
+  const { playChime } =usePlayChime()
   const { generateResponse } = useGenerateResponse()
   const { setMessages, messages } = useContext(ChatBotContext)
   const handlePlay = async () => {
-          // Trigger download of audio file
+    try{
+        // Trigger download of audio file
           const audioBlob = await fetch(audio).then((response) => response.blob());
           console.log(audioBlob);
-
           const audioUrl = URL.createObjectURL(audioBlob);
           console.log(audioUrl);
-    
           const audioElement = new Audio(audioUrl);
           audioElement.play();
+    }catch(err){
+      console.log(err)
+      toast.success("Unable To Say Pronunciation")
+    }
   };
 
   const handleCopy = () => {
@@ -55,9 +60,11 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
     let newArray = messages.slice(0, messages.length - 1);
     const incomingArray = [...newArray, {id : newArray[newArray.length - 1].id + 1, type: "incoming", message: "Thinking", error : false}] 
     setMessages(incomingArray)
-    setTimeout(async() => {
+    setTimeout( async() => {
+      setMessages(incomingArray)
       const response = await generateResponse(incomingArray);
       setMessages(response)
+      playChime()
     }, 1000)
   }
   return <>
