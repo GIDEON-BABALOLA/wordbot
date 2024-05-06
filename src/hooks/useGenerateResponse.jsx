@@ -38,12 +38,12 @@ const dictionaryApi = () => {
           })
           const sentDefinition = fullDefinition.join(",") +  `The transription is given as ${response.data[0].phonetic}`
           const explanation = new myExplanation(sentDefinition, response.data[0].meanings[0].partOfSpeech)
-        const alteredMessage = [...incomingArray, {id : incomingArray[incomingArray.length - 1].id + 1, type: "incoming", message: explanation.messages[0].definition, audio : audio, error : false}]
+        const alteredMessage = [...incomingArray, {id : incomingArray[incomingArray.length - 1].id + 1, type: "incoming", message: explanation.messages[0].definition, audio : audio, error : false, time : new Date().toISOString()}]
         return alteredMessage
         }
        }catch(err){
         setError(true)
-        const alteredMessage = [...incomingArray, {id : incomingArray[incomingArray.length - 1].id + 1, type: "incoming", message:  "Oops! Something went wrong. Please try again", error : true}]
+        const alteredMessage = [...incomingArray, {id : incomingArray[incomingArray.length - 1].id + 1, type: "incoming", message:  "Oops! Something went wrong. Please try again", error : true, time : new Date().toISOString()}]
         return alteredMessage
        }
       }

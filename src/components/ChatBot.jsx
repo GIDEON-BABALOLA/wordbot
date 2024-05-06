@@ -30,7 +30,7 @@ return //closes the function;
       // //Resetting the textarea height to its default height once a message is sent
       setInputInitHeight("50px")
        //Append the users message to the chatbox
-       const outgoingArray = [...messages, {id : messages[messages.length - 1].id + 1, type: "outgoing", message: userMessage}]
+       const outgoingArray = [...messages, {id : messages[messages.length - 1].id + 1, type: "outgoing", message: userMessage,  time : new Date().toISOString()}]
        playChime()
        setMessages(outgoingArray)
        setInputText("")                            

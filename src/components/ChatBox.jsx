@@ -13,7 +13,9 @@ const ChatBox = ({ apiError }) => {
 <p className="jump-text">Hi there,<br />How can I help you today?</p>
             </li>
             {messages.map((message) => (
-<ChatElement  key={message.id}  id={message.id} message={message.message} audio={message.audio} type={message.type} apiError={apiError} error={message.error}/>
+<ChatElement  key={message.id}  id={message.id} message={message.message} audio={message.audio} type={message.type} apiError={apiError} 
+time={message.time}
+error={message.error}/>
             ))}
         </ul>
     </section>

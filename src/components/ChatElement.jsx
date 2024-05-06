@@ -16,7 +16,8 @@ import { BiSolidLike } from "react-icons/bi";
 import ChatBotContext from "../context/chatBotContext";
 import { useGenerateResponse } from "../hooks/useGenerateResponse";
 import { usePlayChime } from "../hooks/usePlayChime";
-const ChatElement = ({ message, type, apiError, audio, error, id}) => {
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+const ChatElement = ({ message, type, apiError, audio, error, id, time}) => {
   const { playChime } =usePlayChime()
   const { generateResponse } = useGenerateResponse()
   const { setMessages, messages } = useContext(ChatBotContext)
@@ -68,8 +69,11 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
     }, 1000)
   }
   return <>
-    {type === "outgoing" ?  <li className="chat outgoing"><span className="potter"><FaRegUser /></span><p>{message}</p> </li> : 
-<li className= "chat incoming">
+    {type === "outgoing" ? <> <li className="chat outgoing"><span className="potter"><FaRegUser /></span><p>{message}</p>
+   </li>
+  { time && <span className="timestamp">{formatDistanceToNow(new Date(time), { addSuffix: true })}</span> }</>
+    : 
+<><li className= "chat incoming">
     <span id="robot">
     <FaRobot size="1.5em" /></span><p className={error ? "error" : ""}>{message} { message === "Thinking" &&  <div className="loaderdot"></div> }
        
@@ -98,7 +102,9 @@ const ChatElement = ({ message, type, apiError, audio, error, id}) => {
         </div>
        }
     </p>
-     </li>}    
+     </li>
+     { time && <span className="timestamp-left">{formatDistanceToNow(new Date(time), { addSuffix: true })}</span> }</>
+     }    
   </>
 
   }

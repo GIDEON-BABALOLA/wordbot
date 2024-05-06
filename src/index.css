@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -108,6 +109,7 @@ box-shadow: 0 0 128px 0 rgba(0,0,0,0, 0.1),
     font-size: 0.95rem;
     max-width: 75%;
     white-space: pre-wrap;
+    margin-bottom: 0%;
 }
 .chatbox .incoming p{
     color: black;
@@ -117,6 +119,25 @@ box-shadow: 0 0 128px 0 rgba(0,0,0,0, 0.1),
 .chatbox .outgoing{
     justify-content: flex-end;
     margin: 20px 0;
+    margin-bottom: 5px;
+}
+.timestamp{
+    display: flex;
+   float: right;
+   /* margin-right: 100px;  */
+   font-size: 9px;
+   font-style: bold;
+   color: #8f8f8f;
+}
+.timestamp-left{
+    display: flex;
+    float: left;
+    /* margin-right: 100px;  */
+    font-size: 9px;
+    font-style: bold;
+    margin-left: 40px;
+    margin-top: 4px;
+    color : #8f8f8f
 }
 /* chatbot icon*/
 .chatbox .incoming span{
@@ -192,7 +213,7 @@ font-size: 30px;
     bottom : 10%
 }
 .chatbot .chatbox{
-    height: 100vh;
+    height: 90vh;
     overflow-y: auto;
     margin-bottom: 0%;
     padding-bottom: 0%;
