@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import  { toast } from "react-hot-toast";
 import { BiMicrophone } from "react-icons/bi";
 import { BiClipboard } from "react-icons/bi";
@@ -22,6 +22,9 @@ const ChatElement = ({ message, type, apiError, audio, error, id, time}) => {
   const { playChime } =usePlayChime()
   const { generateResponse } = useGenerateResponse()
   const { setMessages, messages } = useContext(ChatBotContext)
+  const [like, setLike] = useState(false)
+  const [dislike, setDisLike] = useState(false)
+
   const handlePlay = async () => {
     try{
         // Trigger download of audio file
@@ -90,12 +93,25 @@ const ChatElement = ({ message, type, apiError, audio, error, id, time}) => {
          />
          <AiOutlineSound  style={{margin : "2%"}}
         onClick={handleSpeak} />
-        <BiLike 
+       { like ? 
+        <BiSolidLike 
           style={{margin : "2%"}}
-        />
+          onClick={() => setLike(!like)}
+        />: <BiLike 
+          style={{margin : "2%"}}
+          onClick={() => setLike(!like)}
+        /> }
+       { 
+        dislike ?
+        <BiSolidDislike 
+          style={{margin : "2%"}}
+          onClick={() => setDisLike(!dislike)}
+        /> : 
         <BiDislike 
           style={{margin : "2%"}}
+          onClick={() => setDisLike(!dislike)}
         />
+       }
         <BiSolidTrashAlt
            onClick={handleDelete}
         style={{margin : "2%"}} />
